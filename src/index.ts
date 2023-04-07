@@ -7,6 +7,8 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
+import { authRouter } from './router/index.ts';
+
 dotenv.config();
 const app = express();
 
@@ -21,6 +23,8 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/auth', authRouter);
 
 //creating a server using http
 const server = http.createServer(app);

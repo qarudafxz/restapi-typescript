@@ -1,6 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import { UserModel } from 'models/users';
+import { UserModel } from '../models/users.ts';
 
 export const createUser = async (req: express.Request, res: express.Response) => {
   const { firstName, lastName, email, password } = req.body;
@@ -14,7 +14,7 @@ export const createUser = async (req: express.Request, res: express.Response) =>
     firstName,
     lastName,
     email,
-    password: hashedPassword
+    password: hashedPassword,
   })
 
   await newUser.save();
